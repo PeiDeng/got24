@@ -24,17 +24,17 @@ Responsive CSS style for mobile phone/desktop/tablet
 
   Challenge - 9 one-digit numbers
 
-  ![game-mode](demo_img\game-mode.PNG)
+  ![game-mode](demo_img/game-mode.PNG)
 
   Optional limited time
 
-  ![limited-time](demo_img\limited-time.PNG)
+  ![limited-time](demo_img/limited-time.PNG)
 
 - Game Rules
 
   Manipulate the numbers to get result 24.
 
-![demo](demo_img\demo.gif)
+![demo](demo_img/demo.gif)
 
 ### API
 
