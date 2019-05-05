@@ -1,0 +1,862 @@
+@font-face {
+    font-family: "GemunuLibre";
+    src: url("font/GemunuLibre.otf");
+}
+
+@keyframes flyin {
+    0% {
+        transform: translateY(500px);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes flyin-short {
+    0% {
+        transform: translateY(250px);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+body {
+    overflow-y: hidden;
+}
+
+.container {
+    background-color: #E2DACE;
+    width: 800px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    /*disable user selection*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*disable tap color on ios device*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'GemunuLibre', Arial, Helvetica, sans-serif;
+}
+
+.icon-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.home-icon {
+    width: 100px;
+    height: 100px;
+    background-image: url(raw_sources/home-icon.png);
+    transition: background-image 0.5s ease-in-out;
+}
+
+.on-desktop.home-icon:hover {
+    background-image: url(raw_sources/home-icon-green.png);
+}
+
+.sound-icon {
+    width: 100px;
+    height: 100px;
+    background-image: url(raw_sources/sound-icon.png);
+    transition: background-image 0.5s ease-in-out;
+}
+
+.on-desktop.sound-icon:hover {
+    background-image: url(raw_sources/sound-icon-orange.png);
+}
+
+.sound-icon.muted {
+    background-image: url(raw_sources/mute-icon.png);
+    transition: background-image 0.5s ease-in-out;
+}
+
+.on-desktop.sound-icon.muted:hover {
+    background-image: url(raw_sources/mute-icon-orange.png);
+}
+
+.game-title {
+    text-align: center;
+    font-size: 200px;
+}
+
+.menu-div {
+    padding: 0px;
+    text-align: center;
+}
+
+.button-div {
+    background-color: #45484B;
+    width: 400px;
+    margin: 50px auto;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
+    transition: background-color 0.6s ease-in-out;
+}
+
+.on-desktop.button-div:hover {
+    background-color: #41A437;
+}
+
+.button-text {
+    font-size: 40px;
+    color: #E2DACE;
+    margin: 0;
+    line-height: 100px;
+    padding: 10 0;
+    transition: padding-left 0.6s ease-in-out;
+}
+
+.on-desktop.button-text:hover {
+    padding-left: 200px;
+}
+
+.dash-row {
+    height: 100px;
+}
+
+.dash-cell-one {
+    width: 70%;
+    display: inline-block;
+    text-align: left;
+}
+
+.dash-cell-two {
+    width: 15%;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.dash-cell-three {
+    width: 15%;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.tutorial-text {
+    color: #45484B;
+    margin: 0px 100px;
+    display: inline-block;
+    height: 70px;
+}
+
+.game-round {
+    color: #45484B;
+    margin: 0px 0px;
+    font-size: 70px;
+}
+
+.prompt-text {
+    height: 35px;
+    color: #BC2F2E;
+    margin: 0;
+}
+
+.time-limit {
+    text-align: center;
+    font-size: 90px;
+    color: #45484B;
+    margin: 0px;
+}
+
+.time-limit.warning {
+    color: #BC2F2E;
+}
+
+.reset {
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px #888888;
+    background-image: url(raw_sources/reset-icon.png);
+    width: 100px;
+    height: 100px;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.reset.wrong, .on-desktop.reset:hover {
+    background-image: url(raw_sources/reset-icon-red.png);
+}
+
+.hint {
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px #888888;
+    background-image: url(img/hint-icon.png);
+    width: 100px;
+    height: 100px;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.on-desktop.hint:hover {
+    background-image: url(img/hint-icon-yellow.png);
+}
+
+.game-card-container {
+    margin: 0px 100px 20px;
+}
+
+.game-card {
+    width: 200px;
+    height: 200px;
+    background-color: #45484B;
+    color: #E2DACE;
+    font-size: 50px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
+    display: inline-block;
+    margin: 15px;
+    transition: background-color 0.6s ease-in-out;
+}
+
+.on-desktop.game-card:hover:not(.wrong) {
+    background-color: #41A437;
+}
+
+.game-card.pressed:not(.wrong) {
+    transform: translate(10px, 10px);
+    background-color: #41A437;
+    box-shadow: 0px 0px 20px #45484B;
+    color: white;
+}
+
+.game-card-num {
+    margin: 0;
+    line-height: 200px;
+}
+
+.operator-div {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 0 10px;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px #888888;
+    color: #E2DACE;
+}
+
+.game-card-num.challenge {
+    margin: 0;
+    line-height: 133px;
+}
+
+.game-card.challenge {
+    width: 133px;
+    height: 133px;
+    margin: 10px;
+}
+
+.operator-div.pressed:not(.wrong) {
+    transform: translate(5px, 5px);
+    box-shadow: 0px 0px 20px #45484B;
+    color: white;
+    filter: saturate(2);
+}
+
+.addition {
+    background-color: #279A95;
+}
+
+.subtraction {
+    background-color: #41A437;
+}
+
+.multiplication {
+    background-color: #E1691D;
+}
+
+.division {
+    background-color: #D9B626;
+}
+
+.operator {
+    margin: 0px;
+    line-height: 100px;
+    font-size: 100px;
+}
+
+.prompt-box {
+    background-color: #E2DACE;
+    color: #45484B;
+    width: 50%;
+    z-index: 4;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    box-shadow: 10px 10px 5px black;
+    border-radius: 20px;
+}
+
+.prompt-box-header {
+    font-size: 50px;
+    margin-bottom: 0px;
+}
+
+.prompt-box-header.success {
+    color: #41A437;
+}
+
+.prompt-box-header.warning {
+    color: #BC2F2E;
+}
+
+.prompt-box-text {
+    padding: 0 20px;
+}
+
+.prompt-box-button {
+    display: inline-block;
+    width: 100px;
+    line-height: 40px;
+    background-color: #45484B;
+    color: #E2DACE;
+    margin: 10 20;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.layer-mask.appear {
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    z-index: 3;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.credit-container {
+    padding: 0 150px;
+    color: #45484B;
+    animation: flyin 3s ease-out 0s forwards;
+}
+
+.credit-title {
+    text-align: left;
+    font-size: 25px;
+    margin-top: 0;
+}
+
+.credit-table {
+    font-size: 20px;
+    border-bottom: 2px solid;
+    color: #45484B;
+}
+
+.credit-td1 {
+    width: 200px;
+}
+
+.credit-td2 {
+    width: 300px;
+}
+
+a {
+    color: #45484B;
+}
+
+a:visited {
+    color: #666666;
+}
+
+/* 3D letter animation 
+open source with anonymous author
+URL:https://www.programering.com/a/MTN2IzNwATU.html
+*/
+
+.letter {
+    display: inline-block;
+    font-weight: 900;
+    position: relative;
+    color: #45484B;
+    transform-style: preserve-3d;
+    perspective: 400;
+    z-index: 1;
+}
+
+.letter:before, .letter:after {
+    position: absolute;
+    content: attr(data-letter);
+    transform-origin: top left;
+    top: 0;
+    left: 0;
+}
+
+.letter, .letter:before, .letter:after {
+    transition: all 0.3s ease-in-out;
+}
+
+.letter:before {
+    text-shadow: -1px 0px 1px rgba(255, 255, 255, .8), 1px 0px 1px rgba(0, 0, 0, .8);
+    z-index: 3;
+    transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
+}
+
+.letter:nth-child(1):before {
+    color: #E1691D;
+}
+
+.letter:nth-child(2):before {
+    color: #41A437;
+}
+
+.letter:nth-child(3):before {
+    color: #279A95;
+}
+
+.letter:nth-child(4):before {
+    color: #D9B626;
+}
+
+.letter:nth-child(5):before {
+    color: #BC2F2E;
+}
+
+.letter:after {
+    color: rgba(0, 0, 0, .11);
+    z-index: 2;
+    transform: scale(1.08, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 1deg);
+}
+
+.letter:hover:before {
+    color: #E2DACE;
+    transform: rotateX(0deg) rotateY(-40deg) rotateZ(0deg);
+}
+
+.letter:hover:after {
+    transform: scale(1.08, 1) rotateX(0deg) rotateY(40deg) rotateZ(0deg) skew(0deg, 22deg);
+}
+
+/* Responsive CSS*/
+
+/* Landscape Tablet*/
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) and (orientation: landscape) {
+    .container {
+        width: 100%;
+    }
+    .sound-icon, .home-icon {
+        width: 80px;
+        height: 80px;
+        background-size: 80px
+    }
+    .game-title {
+        font-size: 130px;
+    }
+    .button-div {
+        width: 350px;
+        margin: 30px auto;
+    }
+    .button-text {
+        font-size: 35px;
+        line-height: 88px;
+    }
+    .credit-container {
+        width: 500px;
+        margin: 0 auto;
+    }
+    .credit-title {
+        font-size: 22px;
+        margin-bottom: 0px;
+    }
+    .credit-table {
+        font-size: 18px;
+    }
+    .prompt-box {
+        top: 25%;
+    }
+    .dash-board{
+        width: 700px;
+        margin:0 auto;
+    }
+    .dash-cell-one {
+        width: 60%;
+    }
+    .dash-cell-two {
+        width: 15%;
+    }
+    .dash-cell-three {
+        width: 15%;
+    }
+    .reset, .hint {
+        width: 80px;
+        height: 80px;
+        background-size: 80px;
+    }
+    .time-limit {
+        font-size: 80px;
+        line-height: 80px;
+    }
+    .game-round {
+        font-size: 50px;
+    }
+    .game-card-container {
+        margin: 0 auto 15px;
+        width: 350px;
+    }
+    .game-card {
+        width: 130px;
+        height: 130px;
+        margin: 10px;
+        box-shadow: 5px 5px 5px #888888;
+    }
+    .game-card.pressed:not(.wrong) {
+        transform: translate(5px, 5px);
+    }
+    .game-card-num {
+        line-height: 130px;
+        font-size: 65px;
+    }
+    .game-card.challenge {
+        width: 90px;
+        height: 90px;
+        margin: 5px;
+    }
+    .game-card-num.challenge {
+        line-height: 90px;
+        font-size: 45px;
+    }
+    .operator-div {
+        width: 80px;
+        height: 80px;
+    }
+    .operator {
+        font-size: 80px;
+        line-height: 80px;
+    }
+}
+
+/* Portrait Tablet*/
+
+@media screen and (min-width: 768px) and (max-width: 1023px)and (orientation: portrait) {
+    .container {
+        width: 100%;
+    }
+    .sound-icon, .home-icon {
+        width: 80px;
+        height: 80px;
+        background-size: 80px
+    }
+    .reset, .hint {
+        width: 80px;
+        height: 80px;
+        background-size: 80px;
+    }
+    .time-limit {
+        font-size: 80px;
+        line-height: 80px;
+    }
+    .button-div {
+        margin: 30px auto;
+    }
+    .prompt-box {
+        width: 70%;
+        left: 15%;
+    }
+    .game-card-container {
+        margin: 0 auto 15px;
+        width: 400px;
+    }
+    .game-card {
+        width: 180px;
+        height: 180px;
+        margin: 10px;
+        box-shadow: 5px 5px 5px #888888;
+    }
+    .game-card.pressed:not(.wrong) {
+        transform: translate(5px, 5px);
+    }
+    .game-card-num {
+        line-height: 180px;
+        font-size: 90px;
+    }
+    .game-card.challenge {
+        width: 120px;
+        height: 120px;
+        margin: 5px;
+    }
+    .game-card-num.challenge {
+        line-height: 120px;
+        font-size: 60px;
+    }
+    .operator-div {
+        width: 80px;
+        height: 80px;
+    }
+    .operator {
+        font-size: 80px;
+        line-height: 80px;
+    }
+}
+
+/* Landscape Mobile Phone*/
+
+@media screen and (min-width: 480px) and (max-width: 767px) and (orientation: landscape) {
+    .container {
+        width: 100%;
+    }
+    .icon-bar {
+        padding: 5px;
+    }
+    .sound-icon, .home-icon {
+        width: 40px;
+        height: 40px;
+        background-size: 40px
+    }
+    .game-title {
+        font-size: 70px;
+    }
+    .button-div {
+        width: 200px;
+        margin: 10px auto;
+        box-shadow: 5px 5px 5px #888888;
+    }
+    .button-text {
+        font-size: 15px;
+        line-height: 30px;
+    }
+    .on-desktop.button-text:hover {
+        padding-left: 100px;
+    }
+    .game-title.hide {
+        display: none;
+    }
+    .credit-container {
+        width: 400px;
+        margin: 0 auto;
+        animation: flyin-short 2s ease-out 0s forwards;
+    }
+    .credit-title {
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+    .credit-table {
+        font-size: 8px;
+    }
+    .prompt-box {
+        top: 25%;
+    }
+    .prompt-box-header {
+        font-size: 20px;
+    }
+    .prompt-box-text {
+        font-size: 15px;
+    }
+    .prompt-box-button {
+        width: 50px;
+        line-height: 20px;
+        font-size: 15px;
+        box-shadow: 3px 3px 5px #888888;
+    }
+    .dash-board{
+        width: 400px;
+        margin:0 auto;
+    }
+    .dash-cell-one {
+        width: 60%;
+    }
+    .dash-cell-two {
+        width: 13%;
+    }
+    .dash-cell-three {
+        width: 13%;
+    }
+    .reset, .hint {
+        width: 40px;
+        height: 40px;
+        background-size: 40px;
+        box-shadow: 3px 3px 5px #888888;
+    }
+    .time-limit {
+        font-size: 40px;
+        line-height: 40px;
+    }
+    .game-round {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .tutorial-text {
+        height: 30px;
+        font-size: 15px;
+    }
+    .prompt-text {
+        height: 10px;
+        font-size: 10px;
+    }
+    .game-card-container {
+        margin: 0 auto 5px;
+        width: 180px;
+    }
+    .game-card {
+        width: 60px;
+        height: 60px;
+        margin: 3px;
+        box-shadow: 3px 3px 5px #888888;
+    }
+    .game-card.pressed:not(.wrong) {
+        transform: translate(3px, 3px);
+    }
+    .game-card-num {
+        line-height: 60px;
+        font-size: 35px;
+    }
+    .game-card.challenge {
+        width: 40px;
+        height: 40px;
+        margin: 3px;
+    }
+    .game-card-num.challenge {
+        line-height: 40px;
+        font-size: 20px;
+    }
+    .operator-div {
+        width: 40px;
+        height: 40px;
+        box-shadow: 3px 3px 3px #888888;
+        margin: 0 3px;
+    }
+    .operator {
+        font-size: 40px;
+        line-height: 40px;
+    }
+    .operator-div.pressed:not(.wrong) {
+        transform: translate(3px, 3px);
+        box-shadow: 0px 0px 10px #45484B;
+    }
+}
+
+/* Portrait Mobile Phone*/
+
+@media screen and (max-width: 479px)and (orientation: portrait) {
+    .container {
+        width: 100%;
+    }
+    .game-title {
+        font-size: 100px;
+    }
+    .sound-icon, .home-icon {
+        width: 60px;
+        height: 60px;
+        background-size: 60px
+    }
+    .reset, .hint {
+        width: 60px;
+        height: 60px;
+        background-size: 60px;
+        box-shadow: 3px 3px 5px #888888;
+    }
+    .time-limit {
+        font-size: 60px;
+        line-height: 60px;
+    }
+    .button-div {
+        margin: 30px auto;
+        width: 220px;
+        box-shadow:5px 5px 5px #888888;
+    }
+    .button-text {
+        font-size: 25px;
+        line-height: 50px;
+    }
+    .on-desktop.button-text:hover {
+        padding-left: 100px;
+    }
+    .prompt-box {
+        top: 25%;
+        width: 70%;
+        left: 15%;
+    }
+    .prompt-box-header {
+        font-size: 20px;
+    }
+    .prompt-box-text {
+        font-size: 15px;
+        padding: 0 10px;
+    }
+    .prompt-box-button {
+        width: 50px;
+        line-height: 20px;
+        font-size: 12px;
+        box-shadow: 3px 3px 5px #888888;
+    }
+    .credit-container {
+        width: 300px;
+        margin: 0 auto;
+        animation: flyin-short 2s ease-out 0s forwards;
+        padding: 0px;
+    }
+    .credit-title {
+        font-size: 15px;
+        margin: 5px 0;
+    }
+    .credit-table {
+        font-size: 12px;
+    }
+    .tutorial-text {
+        height: 50px;
+        font-size: 20px;
+        margin: 0 20px;
+    }
+    .game-round {
+        font-size: 50px;
+    }
+    .dash-cell-one {
+        width: 60%;
+    }
+    .dash-cell-two {
+        width: 20%;
+    }
+    .dash-cell-three {
+        width: 20%;
+    }
+    .prompt-text {
+        height: 32px;
+        font-size: 16px;
+        margin: 0px 10px;
+    }
+    .game-card-container {
+        margin: 0 auto 10px;
+        width: 270px;
+    }
+    .game-card {
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        box-shadow: 3px 3px 3px #888888;
+    }
+    .game-card.pressed:not(.wrong) {
+        transform: translate(3px, 3px);
+    }
+    .game-card-num {
+        line-height: 100px;
+        font-size: 50px;
+    }
+    .game-card.challenge {
+        width: 60px;
+        height: 60px;
+        margin: 5px;
+    }
+    .game-card-num.challenge {
+        line-height: 60px;
+        font-size: 30px;
+    }
+    .operator-div {
+        width: 60px;
+        height: 60px;
+        margin: 0 5px;
+        box-shadow: 3px 3px 5px #888888;
+    }
+    .operator {
+        font-size: 60px;
+        line-height: 60px;
+    }
+    .operator-div.pressed:not(.wrong) {
+        transform: translate(3px, 3px);
+        box-shadow: 0px 0px 10px #45484B;
+    }
+}

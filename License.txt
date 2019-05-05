@@ -1,0 +1,14 @@
+#Name, Author, Download Url, License Type
+
+//font
+GemunuLibre.otf, Mooniak, https://www.1001fonts.com/gemunu-libre-font.html#license, Open Source Font
+
+//img
+hint-icon.png, PngTree, https://pngtree.com/free-icon/striking-hint_595675, Free Icon Resource
+
+//sound
+background.mp3, Benjamin Tissot, https://www.bensound.com/royalty-free-music/track/ukulele, FREE Creative Commons License
+selected.wav, Sound Jay, https://www.soundjay.com/button-sounds-5.html, Open Source Sounds
+error.wav, Sound Jay, https://www.soundjay.com/beep-sounds-1.html, Open Source Sounds
+failed.wav, Sound Jay, https://www.soundjay.com/failure-sound-effect.html, Open Source Sounds
+win.wav, Tuudurt, https://freesound.org/people/Tuudurt/sounds/275104/, CC0
